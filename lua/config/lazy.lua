@@ -6,6 +6,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
+local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+    require("go.format").goimports()
+  end,
+  group = format_sync_grp,
+})
+
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
@@ -27,7 +36,10 @@ require("lazy").setup({
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
   install = { colorscheme = { "tokyonight", "habamax", "github_dark" } },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = {
+    enabled = true,
+    notify = false,
+  }, -- automatically check for plugin updates
   performance = {
     rtp = {
       -- disable some rtp plugins
