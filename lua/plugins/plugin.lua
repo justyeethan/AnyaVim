@@ -1,3 +1,4 @@
+local actions = require("telescope.actions")
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
 function getRandomVariable(hashmap)
@@ -140,6 +141,37 @@ if true then
         vim.cmd("colorscheme github_dark_default")
       end,
     },
+    -- change some telescope options and a keymap to browse plugin files
+    {
+      "nvim-telescope/telescope.nvim",
+      keys = {
+      -- add a keymap to browse plugin files
+      -- stylua: ignore
+      {
+        "<leader>fp",
+        function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+        desc = "Find Plugin File",
+      },
+      },
+      -- change some options
+      opts = {
+        defaults = {
+          layout_strategy = "horizontal",
+          layout_config = { prompt_position = "top" },
+          sorting_strategy = "ascending",
+          winblend = 0,
+          mappings = {
+            i = {
+              ["<C-T>"] = false, -- Override prior <C-T> keymapping
+              ["<C-T>"] = actions.select_tab,
+            },
+            n = {
+              ["t"] = actions.select_tab,
+            },
+          },
+        },
+      },
+    },
     {
       "ray-x/go.nvim",
       dependencies = { -- optional packages
@@ -232,6 +264,7 @@ if true then
   }
 end
 
+-- !IMPORTANT! - These are default configurations
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
 --
 -- In your plugin files, you can:
@@ -294,6 +327,14 @@ return {
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
         winblend = 0,
+        mappings = {
+          i = {
+            ["<C-T>"] = actions.select_tab,
+          },
+          n = {
+            ["<C-T>"] = actions.select_tab,
+          },
+        },
       },
     },
   },
