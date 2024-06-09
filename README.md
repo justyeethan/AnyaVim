@@ -60,8 +60,6 @@ nvim
 
 - Ayu Dark
 
-![colorscheme](./examples/colorscheme.png)
-
 ## Modifications
 
 Plugin modifications can be found in lua/plugins/plugins.lua and inside the if statement. There is also a reference to Lazy-vim's default configurations for further examples.
