@@ -2,8 +2,6 @@
 
 A neovim distribution that is very waku waku.
 
-I'm sorry, I was bored.
-
 ## Dashboard
 
 - Dashboard randomly generates an Anya face
