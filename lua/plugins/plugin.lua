@@ -11,6 +11,43 @@ if true then
           position = "right",
         },
       },
+      config = function()
+        require("neo-tree").setup({
+          close_if_last_window = true,
+          popup_border_style = "rounded",
+          enable_git_status = true,
+          enable_diagnostics = true,
+          default_component_configs = {
+            indent = {
+              indent_size = 2,
+              padding = 1, -- extra padding on left hand side
+              with_markers = true,
+              indent_marker = "│",
+              last_indent_marker = "└",
+              highlight = "NeoTreeIndentMarker",
+            },
+            icon = {
+              folder_closed = "",
+              folder_open = "",
+              default = "",
+            },
+          },
+          filesystem = {
+            follow_current_file = { enabled = true },
+            use_libuv_file_watcher = true,
+            filtered_items = {
+              show_hidden = true,
+              respect_gitignore = true,
+            },
+            window = {
+              position = "right",
+              mappings = {
+                f = "none",
+              },
+            },
+          },
+        })
+      end,
     },
     {
       "projekt0n/github-nvim-theme",
@@ -53,6 +90,18 @@ if true then
             },
           },
         },
+      },
+    },
+    {
+      "elixir-tools/elixir-tools.nvim",
+      version = "*",
+      event = { "BufReadPre", "BufNewFile" },
+      config = function()
+        local elixir = require("elixir")
+        elixir.setup()
+      end,
+      dependencies = {
+        "nvim-lua/plenary.nvim",
       },
     },
     {
