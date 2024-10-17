@@ -11,3 +11,6 @@ map("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 map("", "<leader>n", ":bnext<cr>", { desc = "Buffer next" })
 map("", "<leader>p", ":bprevious<cr>", { desc = "Buffer previous" })
 map("", "<leader>d", ":bdelete<cr>", { desc = "Buffer delete" })
+-- Using tab/shifttab
+map("n", "<Tab>", ":bnext<cr>", { desc = "Buffer next" })
+map("n", "<S-Tab>", ":bprevious<cr>", { desc = "Buffer previous" })
