@@ -5,6 +5,15 @@ if true then
     -- Configure LazyVim to load gruvbox
     { "ayu-theme/ayu-vim" },
     {
+      "folke/flash.nvim",
+      event = "VeryLazy",
+      opts = {},
+      keys = {
+        { "s", mode = { "n", "x", "o" }, false },
+        { "S", mode = { "n", "x", "o" }, false },
+      },
+    },
+    {
       "nvim-neo-tree/neo-tree.nvim",
       opts = {
         window = {
