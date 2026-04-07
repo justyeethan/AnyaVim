@@ -1,5 +1,3 @@
-local actions = require("telescope.actions")
-
 if true then
   return {
     -- Configure LazyVim to load gruvbox
@@ -69,37 +67,6 @@ if true then
 
         vim.cmd("colorscheme github_dark_default")
       end,
-    },
-    -- change some telescope options and a keymap to browse plugin files
-    {
-      "nvim-telescope/telescope.nvim",
-      keys = {
-      -- add a keymap to browse plugin files
-      -- stylua: ignore
-      {
-        "<leader>fp",
-        function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
-        desc = "Find Plugin File",
-      },
-      },
-      -- change some options
-      opts = {
-        defaults = {
-          layout_strategy = "horizontal",
-          layout_config = { prompt_position = "top" },
-          sorting_strategy = "ascending",
-          winblend = 0,
-          mappings = {
-            i = {
-              ["<C-T>"] = false, -- Override prior <C-T> keymapping
-              ["<C-T>"] = actions.select_tab,
-            },
-            n = {
-              ["t"] = actions.select_tab,
-            },
-          },
-        },
-      },
     },
     {
       "elixir-tools/elixir-tools.nvim",
