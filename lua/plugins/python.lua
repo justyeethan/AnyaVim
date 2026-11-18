@@ -29,6 +29,18 @@ return {
           },
         },
         ruff = {},
+        pylsp = {
+          settings = {
+            pylsp = {
+              plugins = {
+                pycodestyle = {
+                  -- pycodestyle's defaults plus E501 (line too long)
+                  ignore = { "E121", "E123", "E126", "E226", "E24", "E704", "W503", "W504", "E501" },
+                },
+              },
+            },
+          },
+        },
       },
     },
   },
